@@ -1,0 +1,27 @@
+<header class="nav" [class.nav--open]="menuOpen()">
+  <div class="wrap nav__bar">
+    <a routerLink="/" class="nav__brand" (click)="close()" aria-label="Home">GM<span>.</span></a>
+
+    <button class="nav__burger" type="button" (click)="toggle()"
+            [attr.aria-expanded]="menuOpen()" aria-controls="menu" aria-label="Toggle menu">
+      <span></span><span></span>
+    </button>
+
+    <nav id="menu" class="nav__links" aria-label="Main">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" (click)="close()">Home</a>
+      <a routerLink="/projects" routerLinkActive="is-active" (click)="close()">Projects</a>
+      <a routerLink="/about" routerLinkActive="is-active" (click)="close()">About</a>
+      <a routerLink="/contact" routerLinkActive="is-active" (click)="close()">Contact</a>
+      <a class="btn btn--small" [href]="profile.github" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main><router-outlet /></main>
+
+<footer class="footer">
+  <div class="wrap footer__row">
+    <p>© {{ year }} {{ profile.name }} · {{ profile.location }}</p>
+    <p class="footer__built">Built with Angular</p>
+  </div>
+</footer>
